@@ -9,11 +9,12 @@ node_modules
 /coverage
 
 # production
-/build
+build
 
 # misc
 .DS_Store
 .env.local
+.env
 .env.development.local
 .env.test.locals
 .env.production.local
