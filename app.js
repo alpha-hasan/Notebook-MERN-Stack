@@ -21,7 +21,7 @@ app.use('/api/notes', require('./routes/notes'));
 // Heroku Stuff
 
 if (process.env.NODE_ENV == "production") {
-    app.use(express.static("./frontend/build"));
+    app.use(express.static("../client/build"));
 }
 
 app.listen(PORT, () => {
