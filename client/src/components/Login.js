@@ -33,7 +33,7 @@ const Login = () => {
   }
   return (
     <>
-      <h2 className='my-3'>Create An Account</h2>
+      <h2 className='my-3'>Login To Your Account</h2>
       <form className='my-4' onSubmit={onSubmitHandle}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">Email address</label>

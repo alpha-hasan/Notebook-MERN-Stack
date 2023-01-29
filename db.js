@@ -1,6 +1,12 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-const mongoURI = process.env.DATABASE_URI; // Local Connection : "mongodb://localhost:27017/noteBook"
+
+// MongoDB atlas
+const mongoURI = process.env.DATABASE_URI;
+
+// Local Connection / MongoDB Compass
+// const mongoURI = "mongodb://localhost:27017";
+
 
 const connectToMongo = async () => {
     try {
