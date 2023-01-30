@@ -1,6 +1,6 @@
 require('dotenv').config();
+const path = require('path');
 const connectToMongo = require('./db');
-connectToMongo();
 
 const express = require('express');
 // const cors = require('cors');
@@ -21,9 +21,14 @@ app.use('/api/notes', require('./routes/notes'));
 // Deployment Stuff
 
 if (process.env.NODE_ENV == "production") {
-    app.use(express.static("./client/build"));
+    app.use(express.static(path.join(__dirname, "./client/build/")));
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, "./client/build/index.html"));
+    })
 }
 
-app.listen(PORT, () => {
-    console.log(`NoteBook Backend listening at http://localhost:${PORT}`);
-})
+connectToMongo().then(() => {
+    app.listen(PORT, () => {
+        console.log(`NoteBook Backend listening at http://localhost:${PORT}`);
+    });
+});
