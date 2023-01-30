@@ -18,11 +18,11 @@ app.use(express.json());
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/notes', require('./routes/notes'));
 
-// Heroku Stuff
+// Deployment Stuff
 
-// if (process.env.NODE_ENV == "production") {
-//     app.use(express.static("../client/build"));
-// }
+if (process.env.NODE_ENV == "production") {
+    app.use(express.static("../client/build"));
+}
 
 app.listen(PORT, () => {
     console.log(`NoteBook Backend listening at http://localhost:${PORT}`);
