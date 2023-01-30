@@ -10,12 +10,11 @@ const mongoURI = process.env.DATABASE_URI;
 
 const connectToMongo = async () => {
     try {
-        const connection = await mongoose.connect(mongoURI);
-        console.log('DB Connection Established Successfully!');
-    }
-    catch (error) {
-        console.log('Failed To Established DB Connection: ', error);
-        process.exit(1);
+        mongoose.connect(mongoURI, () => {
+            console.log('DB Connection Established Successfully!');
+        })
+    } catch (error) {
+        console.log('Error: ', error);
     }
 }
 module.exports = connectToMongo;
