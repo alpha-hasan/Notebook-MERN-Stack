@@ -67,10 +67,10 @@ router.post('/signup', [
 
 
 
-// 2# Route: Signin
+// 2# Route: Login
 
 
-router.post('/signin', [
+router.post('/login', [
 
     // Validation: Email & Password
 
