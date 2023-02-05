@@ -30,19 +30,23 @@ const NoteState = (props) => {
     const fetchNotes = async () => {
 
         // Fetching Notes : Backend
+        try {
+            const response = await fetch(`/api/notes/fetchallnotes`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'auth-token': localStorage.getItem('token')
+                }
+            });
+            const json = await response.json();
 
-        const response = await fetch(`/api/notes/fetchallnotes`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'auth-token': localStorage.getItem('token')
-            }
-        });
-        const json = await response.json();
+            // Fetching Notes : Frontend
 
-        // Fetching Notes : Frontend
+            setNotes(json);
+        } catch (error) {
+            console.log('ERROR::::', error.message);
+        }
 
-        setNotes(json);
     }
 
 
