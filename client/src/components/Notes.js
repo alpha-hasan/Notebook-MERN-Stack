@@ -2,18 +2,24 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import NotesItem from './NotesItem';
 import AddNote from './AddNote';
+import UserContext from '../context/users/UserContext';
 import NoteContext from '../context/notes/NoteContext';
 
 const Notes = () => {
-    const context = useContext(NoteContext);
+    const userContext = useContext(UserContext);
+    const { fetchUserDetails } = userContext;
+
+    const notesContext = useContext(NoteContext);
+    const { fetchNotes, notes, updateNote } = notesContext;
+
     let history = useHistory();
-    const { notes, fetchNotes, updateNote } = context;
     const [editedNote, setEditedNote] = useState({ id: "", editedTitle: "", editedDesc: "", editedTag: "" });
     const refOpen = useRef(null);
     const refClose = useRef(null);
 
     useEffect(() => {
         if (localStorage.getItem('token')) {
+            fetchUserDetails();
             fetchNotes();
         }
         else {
