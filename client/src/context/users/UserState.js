@@ -5,7 +5,7 @@ const UserState = (props) => {
     // for development
     // const host = 'http://localhost:80';
 
-    const [userName, setUserName] = useState('dummy');
+    const [userName, setUserName] = useState(null);
 
 
     // Fetch
@@ -25,7 +25,7 @@ const UserState = (props) => {
 
         // Fetching User : Frontend
 
-        setUserName(json);
+        setUserName(json.userInfo.name);
     }
 
     return (

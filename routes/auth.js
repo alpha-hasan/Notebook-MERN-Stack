@@ -118,7 +118,7 @@ router.post('/login', [
 // 3# Route: Userdata-Fetching
 
 
-router.post('/getuserdetails', fetchuser, async (req, res) => {
+router.get('/Fetchuserdetails', fetchuser, async (req, res) => {
     try {
 
         // Fetching everything except pass by user-ID

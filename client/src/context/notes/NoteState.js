@@ -31,7 +31,7 @@ const NoteState = (props) => {
 
         // Fetching Notes : Backend
 
-        const response = await fetch(`/api/notes/fetchallnotes`, {
+        const response = await fetch(`api/notes/fetchallnotes`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ const NoteState = (props) => {
 
         // Adding Note : Backend
 
-        const response = await fetch(`/api/notes/addnote`, {
+        const response = await fetch(`api/notes/addnote`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ const NoteState = (props) => {
             body: JSON.stringify({ title, desc, tag })
         });
         const json = await response.json();
-        console.log(json);
+
 
         // Adding Note : Frontend
 
@@ -78,7 +78,7 @@ const NoteState = (props) => {
 
         // Updating Note : Backend
 
-        const response = await fetch(`/api/notes/updatenote/${id}`, {
+        const response = await fetch(`api/notes/updatenote/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -86,8 +86,7 @@ const NoteState = (props) => {
             },
             body: JSON.stringify({ title, desc, tag })
         });
-        const json = await response.json();
-        console.log(json);
+        await response.json();
 
         // updating Note : Frontend
 
@@ -111,15 +110,14 @@ const NoteState = (props) => {
 
         // Deleting Note : Backend
 
-        const response = await fetch(`/api/notes/deletenote/${id}`, {
+        const response = await fetch(`api/notes/deletenote/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
                 'auth-token': localStorage.getItem('token')
             },
         });
-        const json = await response.json();
-        console.log(json)
+        await response.json();
 
         // Deleting Note : Frontend
 

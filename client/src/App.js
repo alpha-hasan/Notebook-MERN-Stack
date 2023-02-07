@@ -8,7 +8,6 @@ import NoteState from "./context/notes/NoteState"
 import UserState from "./context/users/UserState"
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-import About from "./components/About";
 import Alert from "./components/Alert";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
@@ -22,9 +21,6 @@ function App() {
           <Alert />
           <div className="container">
             <Switch>
-              <Route excat path="/about">
-                <About />
-              </Route>
               <Route excat path="/login">
                 <Login />
               </Route>

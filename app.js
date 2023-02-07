@@ -8,7 +8,7 @@ const express = require('express');
 const app = express();
 // app.use(cors());
 
-// Heroku port || Development port
+// port after deployed || Development port
 const PORT = process.env.PORT || 80;
 
 app.use(express.json());

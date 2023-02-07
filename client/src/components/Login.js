@@ -3,6 +3,9 @@ import NoteContext from '../context/notes/NoteContext';
 import { useHistory } from 'react-router-dom'
 
 const Login = () => {
+  // for development
+  // const host = 'http://localhost:80';
+
   const context = useContext(NoteContext);
   const history = useHistory();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -12,7 +15,7 @@ const Login = () => {
   }
   const onSubmitHandle = async (e) => {
     e.preventDefault();
-    const response = await fetch("/api/auth/login", {
+    const response = await fetch(`api/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -20,7 +23,7 @@ const Login = () => {
       body: JSON.stringify({ email: credentials.email, password: credentials.password })
     });
     const json = await response.json()
-    console.log(json);
+
     if (json.accessToken) {
       // Redirect
       localStorage.setItem('token', json.accessToken);
